@@ -1,11 +1,10 @@
-if(document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded',afterDOMLoaded);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", afterDOMLoaded);
 } else {
-    afterDOMLoaded();
+  afterDOMLoaded();
 }
 
 function afterDOMLoaded() {
-
   function parseUrl(url) {
     url = url || "";
     const match = url.match(
@@ -22,14 +21,13 @@ function afterDOMLoaded() {
   }
 
   document.addEventListener("click", (e) => {
+    const youtubeLink = 'a[href^="https://www.youtube.com/watch?v="]';
 
-	const youtubeLink = 'a[href^="https://www.youtube.com/watch?v="]';
+    if (!e.target.matches(`div[role="feed"] ${youtubeLink} img`)) {
+      return;
+    }
 
-	if(!e.target.matches(`div[role="feed"] ${youtubeLink} img`)) {
-		return;
-	}
-
-	const $link = e.target.closest(youtubeLink);
+    const $link = e.target.closest(youtubeLink);
 
     const youtubeId = parseUrl($link.href);
     if (!youtubeId) {
@@ -38,12 +36,16 @@ function afterDOMLoaded() {
 
     e.preventDefault();
     document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
-    $link.parentNode.innerHTML = `<div class=\"yt4fb-frame-wrapper\"><svg viewbox=\"0 0 16 9\"></svg><iframe class=\"yt4fb-frame\" src=\"//www.youtube.com/embed/${youtubeId}?enablejsapi=1&autoplay=1\" allowfullscreen=\"\" frameborder=\"0\"></iframe></div>`
+    $link.parentNode.innerHTML = `<div class=\"yt4fb-frame-wrapper\"><svg viewbox=\"0 0 16 9\"></svg><iframe class=\"yt4fb-frame\" src=\"//www.youtube.com/embed/${youtubeId}?enablejsapi=1&autoplay=1\" allowfullscreen=\"\" frameborder=\"0\"></iframe></div>`;
   });
 
-  document.addEventListener('play', (e) => {
-	if(e.target.matches('video')) {
-		document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
-	}
-  }, true);
+  document.addEventListener(
+    "play",
+    (e) => {
+      if (e.target.matches("video")) {
+        document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
+      }
+    },
+    true
+  );
 }
