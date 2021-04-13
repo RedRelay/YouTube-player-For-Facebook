@@ -1,0 +1,13 @@
+.yt4fb-frame-wrapper {
+  display: grid;
+  width: 100%;
+}
+
+.yt4fb-frame-wrapper > * {
+  grid-area: 1/1;
+}
+
+.yt4fb-frame-wrapper > .yt4fb-frame {
+  width: 100%;
+  height: 100%;
+}
