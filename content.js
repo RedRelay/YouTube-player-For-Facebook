@@ -20,10 +20,56 @@ function afterDOMLoaded() {
     );
   }
 
+  function createVideoPlayer(youtubeId) {
+    const $frame = document.createElement("iframe");
+    $frame.setAttribute("class", "yt4fb-frame");
+    $frame.setAttribute(
+      "src",
+      `https://www.youtube.com/embed/${youtubeId}?enablejsapi=1&autoplay=1`
+    );
+    $frame.setAttribute("allowfullscreen", "");
+    $frame.setAttribute("frameborder", "0");
+
+    const $wrapper = document.createElement("div");
+    $wrapper.setAttribute("class", "yt4fb-wrapper");
+
+    $wrapper.append($frame, createInfoBar());
+
+    return $wrapper;
+  }
+
+  function createInfoBar() {
+    const $extname = document.createElement("a");
+    $extname.setAttribute("class", "yt4fb-extname");
+    $extname.setAttribute(
+      "href",
+      typeof browser !== "undefined"
+        ? browser.runtime.getManifest().homepage_url
+        : "#"
+    );
+    $extname.setAttribute("target", "_blank");
+    $extname.appendChild(
+      document.createTextNode("YouTube Player for Facebook")
+    );
+
+    const $button = document.createElement("button");
+    $button.appendChild(document.createTextNode("Pause All"));
+
+    const $div = document.createElement("div");
+    $div.setAttribute("class", "yt4fb-ctrl-pause-all");
+    $div.appendChild($button);
+
+    const $info = document.createElement("div");
+    $info.setAttribute("class", "yt4fb-info");
+
+    $info.append($extname, $div);
+    return $info;
+  }
+
   document.addEventListener("click", (e) => {
     const youtubeLink = 'a[href^="https://www.youtube.com/watch?v="]';
 
-    if (!e.target.matches(`div[role="feed"] ${youtubeLink} img`)) {
+    if (!e.target.matches(`${youtubeLink} img`)) {
       return;
     }
 
@@ -36,7 +82,7 @@ function afterDOMLoaded() {
 
     e.preventDefault();
     document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
-    $link.parentNode.innerHTML = `<div class=\"yt4fb-frame-wrapper\"><svg viewbox=\"0 0 16 9\"></svg><iframe class=\"yt4fb-frame\" src=\"//www.youtube.com/embed/${youtubeId}?enablejsapi=1&autoplay=1\" allowfullscreen=\"\" frameborder=\"0\"></iframe></div>`;
+    $link.parentNode.replaceChild(createVideoPlayer(youtubeId), $link);
   });
 
   document.addEventListener(
