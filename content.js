@@ -20,6 +20,10 @@ function afterDOMLoaded() {
     );
   }
 
+  function pauseAll() {
+    document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
+  }
+
   function createVideoPlayer(youtubeId) {
     const $frame = document.createElement("iframe");
     $frame.setAttribute("class", "yt4fb-frame");
@@ -81,15 +85,23 @@ function afterDOMLoaded() {
     }
 
     e.preventDefault();
-    document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
+    pauseAll();
     $link.parentNode.replaceChild(createVideoPlayer(youtubeId), $link);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      e.target.matches(".yt4fb-ctrl-pause-all, .yt4fb-ctrl-pause-all > button")
+    ) {
+      pauseAll();
+    }
   });
 
   document.addEventListener(
     "play",
-    (e) => {
+    function onFacebookNativeVideoPlayed(e) {
       if (e.target.matches("video")) {
-        document.querySelectorAll(".yt4fb-frame").forEach(pauseVideo);
+        pauseAll();
       }
     },
     true
