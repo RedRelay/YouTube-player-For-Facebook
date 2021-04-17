@@ -10,7 +10,7 @@ Enable you to play YouTube links inside Facebook using the native YouTube player
 * Free & Open source : no surprise, anyone can easily inspect code
     * Any addon which ask for your permission to access facebook.com should be transparent with you
 * Very light : only CSS and native JS was used
-    * I am not able to minify resources as Mozzila fundation should be able to easily understand what the addon do to be valided
+    * I am not able to minify resources as Mozzila fundation should be able to easily understand what the addon do to be approved
 * Advanced feature for better quality of life
     * When you load another YouTube video or Facebook native video, then all other YouTube video are paused
     * Sometimes I am not able to listen on video play status, that's why you have a "Pause All" feature above your YouTube player
