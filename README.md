@@ -3,6 +3,7 @@ Enable you to play YouTube links inside Facebook using the native YouTube player
 
 <p align="center">
   <img width="730" height="339" src="https://github.com/RedRelay/YouTube-player-For-Facebook/blob/master/YT4FB.png?raw=true" alt="Addon preview">
+<p align="center"><i>Cursor & Arrow overlays used come from <a href="https://www.freepik.com/" target="_blank">FreePik</a></i></p>
 </p>
 
 ## Why use mine ?
