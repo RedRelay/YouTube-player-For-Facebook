@@ -18,3 +18,6 @@ Enable you to play YouTube links inside Facebook using the native YouTube player
 * That's all the addon do !
     * No adverts
     * No tracking
+
+*I am not affiliated or sponsored by YouTube or Facebook.  
+Theses trademarks are used in the addon name under a Fair Use usage*
