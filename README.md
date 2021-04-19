@@ -6,6 +6,12 @@ Enable you to play YouTube links inside Facebook using the native YouTube player
 <p align="center"><i>Cursor & Arrow overlays used come from <a href="https://www.freepik.com/" target="_blank">FreePik</a></i></p>
 </p>
 
+* [Install for Firefox](https://addons.mozilla.org/fr/firefox/addon/fanmade-yt-player-for-fb)
+* Chrome not available yet
+
+I encourage you to give me a feedback by putting **vote & comment** onto the addon.  
+And of course feel free to **share it on Facebook** to allow a lot of people to watch YouTube video on Facebook directly
+
 ## Why use mine ?
 
 * Free & Open source : no surprise, anyone can easily inspect code
